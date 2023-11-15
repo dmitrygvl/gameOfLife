@@ -11,9 +11,7 @@
     "start": "webpack-dev-server --mode development --open",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "watch": "webpack --mode development --watch",
-    "sass-dev": "sass --watch --update --style=expanded src/styles/SCSS:src/styles/CSS",
-    "sass-prod": "sass --no-source-map --style=compressed src/styles/SCSS:src/styles/CSS"
+    "watch": "webpack --mode development --watch"
   },
   "keywords": [],
   "author": "",
@@ -30,8 +28,17 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jest": "^27.6.0",
+    "husky": "^8.0.3",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^15.1.0",
     "prettier": "^3.1.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,md,yml}": "prettier --write"
   }
 }
