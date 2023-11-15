@@ -23,7 +23,7 @@ export function createGameOfLife(sizeX, sizeY, htmlElement) {
 
   // Создать поле заданного размера
   let field = Array.from({ length: sizeY }).map(() =>
-    Array.from({ length: sizeX }).fill(0)
+    Array.from({ length: sizeX }).fill(0),
   );
 
   const cellClickHandler = (x, y) => {

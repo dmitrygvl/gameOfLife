@@ -7,8 +7,8 @@
  */
 // @ts-ignore
 export function drawField(htmlElement, field, onCellClick) {
-  const rowIterator = (row, rowIndex) => {
-    return `<tr>${row
+  const rowIterator = (row, rowIndex) =>
+    `<tr>${row
       .map((cell, columnIndex) => {
         if (cell === 1) {
           return `<td 
@@ -24,7 +24,6 @@ export function drawField(htmlElement, field, onCellClick) {
       style="background-color:#FFFFFF; height:10px; width:10px;"></td>`;
       })
       .join("")}</tr>`;
-  };
 
   const table = `<table border=1>${field.map(rowIterator).join("")}</table>`;
 

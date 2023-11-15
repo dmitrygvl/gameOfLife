@@ -43,7 +43,7 @@ describe("createGameOfLife", () => {
         `drawField(${JSON.stringify([
           [0, 0],
           [0, 0],
-        ])})`
+        ])})`,
       );
     });
     it("redraw field on interaction with it", () => {
@@ -57,21 +57,21 @@ describe("createGameOfLife", () => {
         `drawField(${JSON.stringify([
           [0, 0],
           [0, 0],
-        ])})`
+        ])})`,
       );
       onCellClick(0, 0);
       expect(element.querySelector(".field-wrapper").innerHTML).toBe(
         `drawField(${JSON.stringify([
           [1, 0],
           [0, 0],
-        ])})`
+        ])})`,
       );
       onCellClick(0, 0);
       expect(element.querySelector(".field-wrapper").innerHTML).toBe(
         `drawField(${JSON.stringify([
           [0, 0],
           [0, 0],
-        ])})`
+        ])})`,
       );
       onCellClick(0, 1);
       onCellClick(1, 1);
@@ -79,7 +79,7 @@ describe("createGameOfLife", () => {
         `drawField(${JSON.stringify([
           [0, 0],
           [1, 1],
-        ])})`
+        ])})`,
       );
     });
     it("on start it runs 1sec timer to update state", async () => {
@@ -95,14 +95,14 @@ describe("createGameOfLife", () => {
         `drawField(${JSON.stringify([
           [1, 0],
           [0, 0],
-        ])})`
+        ])})`,
       );
       await sleep(1000);
       expect(element.querySelector(".field-wrapper").innerHTML).toBe(
         `drawField(${JSON.stringify([
           [0, 0],
           [0, 0],
-        ])})`
+        ])})`,
       );
     });
     it("stops game with alert, when none alive", async () => {

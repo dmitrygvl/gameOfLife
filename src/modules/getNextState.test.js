@@ -56,7 +56,7 @@ describe("getNextState", () => {
     },
   ].forEach((el) => {
     it(`returns ${fieldToStr(el.nextState)} for ${fieldToStr(
-      el.field
+      el.field,
     )}`, () => {
       expect(getNextState(el.field)).toEqual(el.nextState);
     });

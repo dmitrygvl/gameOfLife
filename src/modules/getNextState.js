@@ -25,6 +25,6 @@ export function getNextState(field) {
       const currentState = getCellState(field, cellIndex, rowIndex);
       const newState = getNewCellState(currentState, an);
       return newState;
-    })
+    }),
   );
 }
