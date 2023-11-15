@@ -4,7 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "prettier --check . && eslint . && stylelint \"**/*.css\"",
+    "lint:fix": "prettier --write . && eslint . --fix  && stylelint \"**/*.css\" --fix",
+    "prepare": "husky install",
+    "start": "webpack-dev-server --mode development --open",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "sass-dev": "sass --watch --update --style=expanded src/styles/SCSS:src/styles/CSS",
+    "sass-prod": "sass --no-source-map --style=compressed src/styles/SCSS:src/styles/CSS"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +27,11 @@
     "babel-jest": "^29.7.0",
     "eslint": "^8.53.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jest": "^27.6.0",
     "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0"
+    "jest-environment-jsdom": "^29.7.0",
+    "prettier": "^3.1.0"
   }
 }
