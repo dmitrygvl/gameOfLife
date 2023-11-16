@@ -9,13 +9,17 @@ const webpack = require("webpack");
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, "./src/index.js"),
+    main: path.resolve(__dirname, "./src/index.ts"),
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "[name].[hash].js",
     clean: true,
   },
+  resolve: {
+    extensions: [".js", ".ts"],
+  },
+  devtool: "inline-source-map",
   devServer: {
     static: path.join(__dirname, "dist"),
     compress: true,

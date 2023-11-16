@@ -20,6 +20,7 @@
     "@babel/core": "^7.23.3",
     "@babel/plugin-transform-class-properties": "^7.23.3",
     "@babel/preset-env": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
     "@types/jest": "^29.5.8",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
@@ -53,5 +54,8 @@
       "eslint --fix"
     ],
     "*.{css,md,yml}": "prettier --write"
+  },
+  "dependencies": {
+    "core-js": "^3.33.2"
   }
 }
