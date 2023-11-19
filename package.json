@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "prettier --check . && eslint .",
-    "lint:fix": "prettier --write . && eslint . --fix",
+    "lint": "prettier --check . && eslint . && npx tsc --noEmit",
+    "lint:fix": "prettier --write . && eslint . --fix && npx tsc --noEmit",
     "prepare": "husky install",
     "start": "webpack serve --mode development",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "watch": "webpack --mode development --watch"
+    "watch": "webpack --mode development --watch",
+    "check-ts": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",

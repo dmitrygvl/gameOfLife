@@ -8,9 +8,8 @@ module.exports = {
   plugins: ["@typescript-eslint", "jest"],
   extends: [
     "airbnb-base",
-    "eslint:recommended",
+    "plugin:jest/recommended",
     "plugin:@typescript-eslint/recommended",
-
     "prettier",
   ],
   overrides: [
@@ -24,10 +23,6 @@ module.exports = {
       },
     },
   ],
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
   ignorePatterns: ["main.js"],
   rules: {
     "max-len": [
