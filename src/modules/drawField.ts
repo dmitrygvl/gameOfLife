@@ -6,10 +6,10 @@
  * @returns void
  */
 // @ts-ignore
-export function drawField(htmlElement, field, onCellClick) {
-  const rowIterator = (row, rowIndex) =>
+export function drawField(htmlElement: HTMLElement, field: number[][], onCellClick: (x: number, y: number) => void)  {
+  const rowIterator = (row: number[], rowIndex: number) =>
     `<tr>${row
-      .map((cell, columnIndex) => {
+      .map((cell: number, columnIndex: number) => {
         if (cell === 1) {
           return `<td 
         data-x=${columnIndex}
@@ -30,13 +30,13 @@ export function drawField(htmlElement, field, onCellClick) {
   // eslint-disable-next-line no-param-reassign
   htmlElement.innerHTML = table;
 
-  htmlElement.querySelector("table").addEventListener("click", (ev) => {
-    const clickedElement = ev.target;
-    // @ts-ignore
+  htmlElement.querySelector("table")!.addEventListener("click", (ev) => {
+    const clickedElement = ev.target as HTMLElement;
+    
     const x = clickedElement.getAttribute("data-x");
-    // @ts-ignore
+    
     const y = clickedElement.getAttribute("data-y");
-    if (x >= 0 && y >= 0) {
+    if (x && y) {
       onCellClick(Number(x), Number(y));
     }
   });
