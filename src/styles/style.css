@@ -1,0 +1,13 @@
+body {
+  background: #2c98d7;
+}
+
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.5;
+  zoom: 2;
+}
