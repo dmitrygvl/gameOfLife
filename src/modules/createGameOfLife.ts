@@ -76,7 +76,6 @@
 //   });
 // }
 
-
 //
 
 /* eslint-disable no-param-reassign */
@@ -95,20 +94,22 @@ import { isAnyoneAlive } from "./isAnyoneAlive";
 export function createGameOfLife(
   sizeX: number,
   sizeY: number,
-  htmlElement: HTMLElement
-  ): void {
+  htmlElement: HTMLElement,
+): void {
   let gameIsRunning = false;
   let timer: ReturnType<typeof setInterval>;
 
   // Создать блок для поля
   // Создать кнопку управления игрой
   htmlElement.innerHTML = `<div class="field-wrapper"></div><button>Start</button>`;
-  const fieldWrapper = htmlElement.querySelector(".field-wrapper") as HTMLElement;
+  const fieldWrapper = htmlElement.querySelector(
+    ".field-wrapper",
+  ) as HTMLElement;
   const button = htmlElement.querySelector("button") as HTMLElement;
 
   // Создать поле заданного размера
   let field = Array.from({ length: sizeY }).map(() =>
-    Array.from({ length: sizeX }).fill(0)
+    Array.from({ length: sizeX }).fill(0),
   ) as number[][];
 
   const cellClickHandler = (x: number, y: number): void => {

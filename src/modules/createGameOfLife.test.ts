@@ -9,7 +9,6 @@ const sleep = (x: number) => new Promise((resolve) => setTimeout(resolve, x));
 
 describe("createGameOfLife", () => {
   let element: HTMLElement;
-  const originalAlert = window.alert;
 
   beforeEach(() => {
     element = document.createElement("div");
@@ -29,7 +28,7 @@ describe("createGameOfLife", () => {
     });
     it("changes button name on click", () => {
       createGameOfLife(10, 10, element);
-      const button = element.querySelector('button') as HTMLButtonElement;
+      const button = element.querySelector("button") as HTMLButtonElement;
       expect(button.innerHTML).toBe("Start");
       button.click();
       expect(button.innerHTML).toBe("Stop");
@@ -94,7 +93,7 @@ describe("createGameOfLife", () => {
       });
       createGameOfLife(2, 2, element);
       onCellClick(0, 0);
-      const button = element.querySelector('button') as HTMLButtonElement;
+      const button = element.querySelector("button") as HTMLButtonElement;
       button.click();
       expect(element.querySelector(".field-wrapper")!.innerHTML).toBe(
         `drawField(${JSON.stringify([
@@ -111,14 +110,14 @@ describe("createGameOfLife", () => {
       );
     });
     it("stops game with alert, when none alive", async () => {
-      let onCellClick = (x: number, y: number) => {};;
+      let onCellClick = (x: number, y: number) => {};
       drawFieldMock.mockImplementation((fieldEl, field, cellClickHandler) => {
         onCellClick = cellClickHandler;
         fieldEl.innerHTML = `drawField(${JSON.stringify(field)})`;
       });
       createGameOfLife(2, 2, element);
       onCellClick(0, 0);
-      const button = element.querySelector('button') as HTMLButtonElement;
+      const button = element.querySelector("button") as HTMLButtonElement;
       button.click();
       await sleep(1000);
       expect(window.alert).toHaveBeenCalledWith("Death on the block");
