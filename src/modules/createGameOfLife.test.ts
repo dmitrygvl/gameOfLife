@@ -22,13 +22,13 @@ describe("createGameOfLife", () => {
   describe("UI", () => {
     it("creates Start button and field", () => {
       createGameOfLife(10, 10, element);
-      expect(element.querySelector("playBtn")).toBeTruthy();
-      expect(element.querySelector("playBtn")!.innerHTML).toBe("Start");
+      expect(element.querySelector(".playBtn")).toBeTruthy();
+      expect(element.querySelector(".playBtn")!.innerHTML).toBe("Start");
       expect(element.querySelector(".field-wrapper")).toBeTruthy();
     });
     it("changes button name on click", () => {
       createGameOfLife(10, 10, element);
-      const button = element.querySelector("button") as HTMLButtonElement;
+      const button = element.querySelector(".playBtn") as HTMLButtonElement;
       expect(button.innerHTML).toBe("Start");
       button.click();
       expect(button.innerHTML).toBe("Stop");
@@ -93,7 +93,7 @@ describe("createGameOfLife", () => {
       });
       createGameOfLife(2, 2, element);
       onCellClick(0, 0);
-      const button = element.querySelector("button") as HTMLButtonElement;
+      const button = element.querySelector(".playBtn") as HTMLButtonElement;
       button.click();
       expect(element.querySelector(".field-wrapper")!.innerHTML).toBe(
         `drawField(${JSON.stringify([
@@ -117,11 +117,28 @@ describe("createGameOfLife", () => {
       });
       createGameOfLife(2, 2, element);
       onCellClick(0, 0);
-      const button = element.querySelector("button") as HTMLButtonElement;
+      const button = element.querySelector(".playBtn") as HTMLButtonElement;
       button.click();
       await sleep(1000);
-      expect(window.alert).toHaveBeenCalledWith("Death on the block");
+      expect(window.alert).toHaveBeenCalledWith("Death on the block!");
       expect(button!.innerHTML).toBe("Start");
     });
+    it('handles changeSizeBtn click and updates the field', () => { // Тест для изменения размера поля
+    createGameOfLife(5, 5, element);
+
+    const changeSizeBtn = element.querySelector('.changeSizeBtn') as HTMLButtonElement;
+    const widthInput = element.querySelector('.control-width') as HTMLInputElement;
+    const heightInput = element.querySelector('.control-height') as HTMLInputElement;
+
+  
+    widthInput.value = '9';
+    heightInput.value = '9';
+    changeSizeBtn.click();
+
+    const mockCalls = drawFieldMock.mock.calls;
+    const chengedField = mockCalls[mockCalls.length - 1][1];
+    expect(chengedField).toHaveLength(9);
+    expect(chengedField[0]).toHaveLength(9);
+  });
   });
 });
