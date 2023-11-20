@@ -1,5 +1,50 @@
 body {
   background: #2c98d7;
+  background: aquamarine;
+  background: linear-gradient(#abbaab, #ffffff);
+  background: linear-gradient(#73c8a9, #373b44);
+  background: linear-gradient(#73c8a9, #2c98d7);
+}
+
+.control {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  gap: 10px;
+}
+
+.input {
+  width: 40px;
+  border-radius: 8px;
+}
+
+.button {
+  color: #fff;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid #6941c6;
+  background: #6941c6;
+  box-shadow: 0 1px 2px 0 rgb(16 24 40 / 5%);
+}
+
+.playBtn-box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.playBtn {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  /* zoom: 2; */
 }
 
 .field-wrapper {

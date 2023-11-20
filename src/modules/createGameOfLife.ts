@@ -100,15 +100,42 @@ export function createGameOfLife(
   let timer: ReturnType<typeof setInterval>;
 
   // Создать блок для поля
-  // Создать кнопку управления игрой
-  htmlElement.innerHTML = `<div class="field-wrapper"></div><button>Start</button>`;
-  const fieldWrapper = htmlElement.querySelector(
+  // Создать кнопки управления игрой
+
+    htmlElement.innerHTML = `
+   <div class="control">
+    <div class="input-box">
+      <label for="control-speed">Speed: </label>
+      <input class="control-speed" type="range" min="10" max="200" value="100" step="10">
+    </div>
+    <div class="input-box">
+     <label for="control-width">Width: </label>
+     <input class="input control-width" type="number" value="7" min="3">
+    </div>
+    <div class="input-box">
+     <label for="control-height">Height: </label>
+     <input class="input control-height" type="number" value="7" min="3">
+    </div>
+    <button class="button changeSizeBtn">Change size</button>
+  </div>
+  <div class="field-wrapper"></div>
+  <div class="playBtn-box"><button class="button playBtn">Start</button></div>
+  `;
+
+ const speedInput = htmlElement.querySelector(".control-speed") as HTMLInputElement;
+ const widthInput = htmlElement.querySelector(".control-width") as HTMLInputElement;
+ const heightInput = htmlElement.querySelector("control-height") as HTMLInputElement;
+ const changeSizeBtn = htmlElement.querySelector(".changeSizeBtn") as HTMLButtonElement;
+ const playBtn = htmlElement.querySelector(".playBtn") as HTMLButtonElement;
+ const fieldWrapper = htmlElement.querySelector(
     ".field-wrapper",
   ) as HTMLElement;
-  const button = htmlElement.querySelector("button") as HTMLElement;
+  
+
+    let speed = 100;
 
   // Создать поле заданного размера
-  let field = Array.from({ length: sizeY }).map(() =>
+  let field: number[][] = Array.from({ length: sizeY }).map(() =>
     Array.from({ length: sizeX }).fill(0),
   ) as number[][];
 
@@ -124,7 +151,7 @@ export function createGameOfLife(
   // - перерисовать поле
   function stopGame(): void {
     gameIsRunning = false;
-    button!.innerHTML = "Start";
+    playBtn!.innerHTML = "Start";
     // При клике на кнопке `Stop` остановить таймер
     clearInterval(timer);
   }
@@ -132,7 +159,7 @@ export function createGameOfLife(
     // При клике по кнопке старт
     // - поменять надпись на `Stop`
     gameIsRunning = true;
-    button!.innerHTML = "Stop";
+    playBtn!.innerHTML = "Stop";
     // - запустить таймер для обновления поля
     timer = setInterval(() => {
       // В таймере обновления поля
@@ -151,7 +178,7 @@ export function createGameOfLife(
     }, 1000);
   }
 
-  button!.addEventListener("click", () => {
+  playBtn!.addEventListener("click", () => {
     if (!gameIsRunning) {
       startGame();
     } else {
