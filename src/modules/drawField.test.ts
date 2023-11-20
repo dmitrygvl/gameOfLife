@@ -11,14 +11,14 @@ describe("drawField", () => {
 
   it("renders dead field 1x1", () => {
     drawField(el, [[0]], onCellClick);
-    expect(el.querySelectorAll(".cell").length).toBe(1);
-    expect(el.querySelectorAll(".cell.dead").length).toBe(1);
+    expect(el.querySelectorAll(".alive, .dead")).toHaveLength(1);
+    expect(el.querySelectorAll(".dead")).toHaveLength(1);
   });
 
-  it("renders alive field 1x1", () => {
+  it("renders dying cell field 1x1", () => {
     drawField(el, [[1]], onCellClick);
-    expect(el.querySelectorAll(".cell").length).toBe(1);
-    expect(el.querySelectorAll(".cell.alive").length).toBe(1);
+    expect(el.querySelectorAll(".dying")).toHaveLength(1);
+    expect(el.querySelectorAll(".alive")).toHaveLength(0);
   });
 
   it("renders field mxn", () => {
@@ -28,9 +28,9 @@ describe("drawField", () => {
       [1, 1, 0],
     ];
     drawField(el, field, onCellClick);
-    expect(el.querySelectorAll(".cell").length).toBe(9);
-    expect(el.querySelectorAll(".cell.alive").length).toBe(3);
-    expect(el.querySelectorAll(".cell.dead").length).toBe(6);
+    expect(el.querySelectorAll(".dying")).toHaveLength(2);
+    expect(el.querySelectorAll(".alive")).toHaveLength(1);
+    expect(el.querySelectorAll(".dead")).toHaveLength(6);
   });
 
   describe("onCellClick", () => {
@@ -42,16 +42,16 @@ describe("drawField", () => {
       ];
       drawField(el, field, onCellClick);
       const cell1 = el.querySelector(
-        '.cell[data-x="1"][data-y="2"]',
+        ".alive[data-x=\"1\"][data-y=\"2\"]"
       ) as HTMLElement;
       cell1.click();
       expect(onCellClick).toHaveBeenCalledWith(1, 2);
 
       const cell2 = el.querySelector(
-        '.cell[data-x="2"][data-y="0"]',
+        ".dying[data-x=\"2\"][data-y=\"1\"]"
       ) as HTMLElement;
       cell2.click();
-      expect(onCellClick).toHaveBeenCalledWith(2, 0);
+      expect(onCellClick).toHaveBeenCalledWith(2, 1);
     });
 
     it("calls onCellClick only once on multiple drawing", () => {
@@ -63,11 +63,53 @@ describe("drawField", () => {
       drawField(el, field, onCellClick);
       drawField(el, field, onCellClick);
       const cell1 = el.querySelector(
-        '.cell[data-x="1"][data-y="2"]',
+        ".alive[data-x=\"1\"][data-y=\"2\"]"
       ) as HTMLElement;
       cell1.click();
       expect(onCellClick).toHaveBeenCalledWith(1, 2);
       expect(onCellClick).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("cell state visualization", () => {
+    it("marks cells with < 2 live neighbours as dying", () => {
+      drawField(
+        el,
+        [
+          [1, 0],
+          [0, 0],
+        ],
+        onCellClick
+      );
+      const dyingCell = el.querySelector(".dying");
+      expect(dyingCell).not.toBeNull();
+    });
+
+    it("marks cells with > 3 live neighbours as dying", () => {
+      drawField(
+        el,
+        [
+          [1, 1, 1],
+          [1, 1, 0],
+          [0, 0, 0],
+        ],
+        onCellClick
+      );
+      const dyingCell = el.querySelector(".dying");
+      expect(dyingCell).not.toBeNull();
+    });
+
+    it("doesn't mark cells with 2 or 3 live neighbours as dying", () => {
+      drawField(
+        el,
+        [
+          [1, 1],
+          [1, 0],
+        ],
+        onCellClick
+      );
+      const dyingCell = el.querySelector(".dying");
+      expect(dyingCell).toBeNull();
     });
   });
 });

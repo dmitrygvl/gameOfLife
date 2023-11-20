@@ -22,8 +22,8 @@ describe("createGameOfLife", () => {
   describe("UI", () => {
     it("creates Start button and field", () => {
       createGameOfLife(10, 10, element);
-      expect(element.querySelector("button")).toBeTruthy();
-      expect(element.querySelector("button")!.innerHTML).toBe("Start");
+      expect(element.querySelector("playBtn")).toBeTruthy();
+      expect(element.querySelector("playBtn")!.innerHTML).toBe("Start");
       expect(element.querySelector(".field-wrapper")).toBeTruthy();
     });
     it("changes button name on click", () => {
