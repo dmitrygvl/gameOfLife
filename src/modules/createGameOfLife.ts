@@ -22,7 +22,7 @@ export function createGameOfLife(
   // Создать блок для поля
   // Создать кнопки управления игрой
 
-    htmlElement.innerHTML = `
+  htmlElement.innerHTML = `
    <div class="control">
     <div class="input-box">
       <label for="control-speed">Speed: </label>
@@ -42,18 +42,29 @@ export function createGameOfLife(
   <div class="playBtn-box"><button class="button playBtn">Start</button></div>
   `;
 
- const speedInput = htmlElement.querySelector(".control-speed") as HTMLInputElement;
- const widthInput = htmlElement.querySelector(".control-width") as HTMLInputElement;
- const heightInput = htmlElement.querySelector(".control-height") as HTMLInputElement;
- const changeSizeBtn = htmlElement.querySelector(".changeSizeBtn") as HTMLButtonElement;
- const fieldWrapper = htmlElement.querySelector(".field-wrapper") as HTMLElement;
- const playBtn = htmlElement.querySelector(".playBtn") as HTMLButtonElement;
- 
-let speed = 100;
+  const speedInput = htmlElement.querySelector(
+    ".control-speed",
+  ) as HTMLInputElement;
+  const widthInput = htmlElement.querySelector(
+    ".control-width",
+  ) as HTMLInputElement;
+  const heightInput = htmlElement.querySelector(
+    ".control-height",
+  ) as HTMLInputElement;
+  const changeSizeBtn = htmlElement.querySelector(
+    ".changeSizeBtn",
+  ) as HTMLButtonElement;
+  const fieldWrapper = htmlElement.querySelector(
+    ".field-wrapper",
+  ) as HTMLElement;
+  const playBtn = htmlElement.querySelector(".playBtn") as HTMLButtonElement;
+
+  let speed = 100;
 
   // Создать поле заданного размера
   let field: number[][] = Array.from({ length: sizeY }).map(() =>
-    Array.from({ length: sizeX }).map(() => 0)) as number[][];
+    Array.from({ length: sizeX }).map(() => 0),
+  ) as number[][];
 
   const cellClickHandler = (x: number, y: number): void => {
     field[y][x] = field[y][x] === 0 ? 1 : 0;
@@ -77,14 +88,14 @@ let speed = 100;
 
     if (newHeight > field.length) {
       const newRows = Array.from({ length: newHeight - field.length }).map(() =>
-        new Array(newHeight).fill(0)
+        new Array(newHeight).fill(0),
       );
       field.push(...newRows);
     } else if (newHeight < field.length) {
       field = field.slice(0, newHeight);
     }
     drawField(fieldWrapper, field, cellClickHandler);
-  })
+  });
 
   // Отрисовать поле заданного размера
   drawField(fieldWrapper, field, cellClickHandler);
@@ -100,11 +111,11 @@ let speed = 100;
 
   function updateGame() {
     // - посчитать новое состояние поля
-      // - отрисовать новое состояние поля
-      // - проверить, что есть живые клетки
-      // - если живых клеток нет
-      //    - остановить таймер
-      //    - вывести сообщение
+    // - отрисовать новое состояние поля
+    // - проверить, что есть живые клетки
+    // - если живых клеток нет
+    //    - остановить таймер
+    //    - вывести сообщение
     field = getNextState(field);
     drawField(fieldWrapper, field, cellClickHandler);
     if (!isAnyoneAlive(field)) {
@@ -131,13 +142,13 @@ let speed = 100;
   });
 
   function changeGameSpeed() {
-  speed = parseInt(speedInput.value, 10);
+    speed = parseInt(speedInput.value, 10);
 
-  if (gameIsRunning) {
-    clearInterval(timer);
-    timer = setInterval(updateGame, speed);
+    if (gameIsRunning) {
+      clearInterval(timer);
+      timer = setInterval(updateGame, speed);
+    }
   }
-}
 
-speedInput.addEventListener("input", changeGameSpeed)
+  speedInput.addEventListener("input", changeGameSpeed);
 }

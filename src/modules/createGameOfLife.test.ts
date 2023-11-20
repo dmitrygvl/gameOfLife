@@ -123,22 +123,28 @@ describe("createGameOfLife", () => {
       expect(window.alert).toHaveBeenCalledWith("Death on the block!");
       expect(button!.innerHTML).toBe("Start");
     });
-    it('handles changeSizeBtn click and updates the field', () => { // Тест для изменения размера поля
-    createGameOfLife(5, 5, element);
+    it("handles changeSizeBtn click and updates the field", () => {
+      // Тест для изменения размера поля
+      createGameOfLife(5, 5, element);
 
-    const changeSizeBtn = element.querySelector('.changeSizeBtn') as HTMLButtonElement;
-    const widthInput = element.querySelector('.control-width') as HTMLInputElement;
-    const heightInput = element.querySelector('.control-height') as HTMLInputElement;
+      const changeSizeBtn = element.querySelector(
+        ".changeSizeBtn",
+      ) as HTMLButtonElement;
+      const widthInput = element.querySelector(
+        ".control-width",
+      ) as HTMLInputElement;
+      const heightInput = element.querySelector(
+        ".control-height",
+      ) as HTMLInputElement;
 
-  
-    widthInput.value = '9';
-    heightInput.value = '9';
-    changeSizeBtn.click();
+      widthInput.value = "9";
+      heightInput.value = "9";
+      changeSizeBtn.click();
 
-    const mockCalls = drawFieldMock.mock.calls;
-    const chengedField = mockCalls[mockCalls.length - 1][1];
-    expect(chengedField).toHaveLength(9);
-    expect(chengedField[0]).toHaveLength(9);
-  });
+      const mockCalls = drawFieldMock.mock.calls;
+      const chengedField = mockCalls[mockCalls.length - 1][1];
+      expect(chengedField).toHaveLength(9);
+      expect(chengedField[0]).toHaveLength(9);
+    });
   });
 });
