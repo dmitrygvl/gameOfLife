@@ -44,13 +44,12 @@ export function createGameOfLife(
 
  const speedInput = htmlElement.querySelector(".control-speed") as HTMLInputElement;
  const widthInput = htmlElement.querySelector(".control-width") as HTMLInputElement;
- const heightInput = htmlElement.querySelector("control-height") as HTMLInputElement;
+ const heightInput = htmlElement.querySelector(".control-height") as HTMLInputElement;
  const changeSizeBtn = htmlElement.querySelector(".changeSizeBtn") as HTMLButtonElement;
- const playBtn = htmlElement.querySelector(".playBtn") as HTMLButtonElement;
  const fieldWrapper = htmlElement.querySelector(".field-wrapper") as HTMLElement;
-  
-
-    let speed = 100;
+ const playBtn = htmlElement.querySelector(".playBtn") as HTMLButtonElement;
+ 
+let speed = 100;
 
   // Создать поле заданного размера
   let field: number[][] = Array.from({ length: sizeY }).map(() =>
