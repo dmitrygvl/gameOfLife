@@ -1,8 +1,4 @@
 body {
-  background: #2c98d7;
-  background: aquamarine;
-  background: linear-gradient(#abbaab, #ffffff);
-  background: linear-gradient(#73c8a9, #373b44);
   background: linear-gradient(#73c8a9, #2c98d7);
 }
 
@@ -55,4 +51,21 @@ body {
   align-items: center;
   line-height: 1.5;
   zoom: 2;
+}
+
+.cell {
+  height: 10px;
+  width: 10px;
+}
+
+.alive {
+  background-color: #fa58d0;
+}
+
+.dying {
+  background-color: #3e71d7;
+}
+
+.dead {
+  background-color: #ffffff;
 }

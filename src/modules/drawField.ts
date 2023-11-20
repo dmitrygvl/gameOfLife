@@ -1,4 +1,4 @@
-// import { getNumOfAliveNeighbours } from "./getNumOfAliveNeighbours";
+import { getNumOfAliveNeighbours } from "./getNumOfAliveNeighbours";
 
 /**
  * отрисовка поля
@@ -15,19 +15,24 @@ export function drawField(
 ): void {
   const rowIterator = (row: number[], rowIndex: number) =>
     `<tr>${row
-      .map((cell, columnIndex) => {
+      .map((cell: number, columnIndex: number) => {
         if (cell === 1) {
+          const aliveNeighbors = getNumOfAliveNeighbours(columnIndex, rowIndex, field);
+          if (aliveNeighbors < 2 || aliveNeighbors > 3) {
+            return `<td 
+          data-x=${columnIndex}
+          data-y=${rowIndex}
+          class="cell dying"></td>`;
+          }
           return `<td 
         data-x=${columnIndex}
         data-y=${rowIndex}
-        class="cell alive" 
-        style="background-color:#FA58D0; height:10px; width:10px;"></td>`;
+        class="cell alive"></td>`;
         }
         return `<td 
       data-x=${columnIndex}
       data-y=${rowIndex}
-      class="cell dead" 
-      style="background-color:#FFFFFF; height:10px; width:10px;"></td>`;
+      class="cell dead"></td>`;
       })
       .join("")}</tr>`;
 
