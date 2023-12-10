@@ -36,6 +36,7 @@ module.exports = {
     "@typescript-eslint/no-var-requires": 0,
     "import/prefer-default-export": "off",
     "no-promise-executor-return": "off",
+    "no-param-reassign": "off",
     "no-unused-vars": "off",
     "no-plusplus": "off",
     "import/no-unresolved": "off", // https://github.com/typescript-eslint/typescript-eslint/issues/1624
