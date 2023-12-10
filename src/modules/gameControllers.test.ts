@@ -1,117 +1,52 @@
 import { gameControllers } from "./gameControllers";
 
-describe('gameControllers', () => {
-	let sizeX: number;
-	let sizeY: number;
-	let fieldWrapper: HTMLElement;
-	let changeSizeBtn: HTMLButtonElement;
-	let speedInput: HTMLInputElement;
-	let playBtn: HTMLButtonElement;
-	let widthInput: HTMLInputElement;
-	let heightInput: HTMLInputElement;
-	let gameIsRunning: boolean;
-	let timer: ReturnType<typeof setInterval>;
+// Mock elements to use in the tests
+const mockFieldWrapper = document.createElement("div");
+const mockChangeSizeBtn = document.createElement("button");
+const mockSpeedInput = document.createElement("input");
+const mockPlayBtn = document.createElement("button");
+const mockWidthInput = document.createElement("input");
+const mockHeightInput = document.createElement("input");
 
-	beforeEach(() => {
-		sizeX = 10;
-		sizeY = 10;
-		fieldWrapper = document.createElement('div');
-		changeSizeBtn = document.createElement('button');
-		speedInput = document.createElement('input');
-		playBtn = document.createElement('button');
-		widthInput = document.createElement('input');
-		heightInput = document.createElement('input');
-		gameIsRunning = false;
-		timer = setInterval(() => {}, 1000); // Подставьте функцию, которая будет выполняться и интервал
+describe("gameControllers", () => {
+  beforeEach(() => {
+    mockFieldWrapper.innerHTML = "";
+    mockChangeSizeBtn.removeEventListener("click", jest.fn());
+  });
 
-		// Симулируем добавление элементов в DOM
-		document.body.appendChild(fieldWrapper);
-		document.body.appendChild(changeSizeBtn);
-		document.body.appendChild(speedInput);
-		document.body.appendChild(playBtn);
-		document.body.appendChild(widthInput);
-		document.body.appendChild(heightInput);
-	});
+  it("changes game speed on input change", () => {
+    gameControllers(
+      10, // sizeX
+      10, // sizeY
+      mockFieldWrapper,
+      mockChangeSizeBtn,
+      mockSpeedInput,
+      mockPlayBtn,
+      mockWidthInput,
+      mockHeightInput,
+      false, // gameIsRunning
+      setInterval(() => {}, 0), // timer
+    );
 
-	afterEach(() => {
-		// Удаляем элементы после каждого теста
-		fieldWrapper.remove();
-		changeSizeBtn.remove();
-		speedInput.remove();
-		playBtn.remove();
-		widthInput.remove();
-		heightInput.remove();
-	});
+    mockSpeedInput.value = "200";
+    mockSpeedInput.dispatchEvent(new Event("input"));
+  });
+  it("changes the size of the game field", () => {
+    gameControllers(
+      10, // sizeX
+      10, // sizeY
+      mockFieldWrapper,
+      mockChangeSizeBtn,
+      mockSpeedInput,
+      mockPlayBtn,
+      mockWidthInput,
+      mockHeightInput,
+      false, // gameIsRunning
+      setInterval(() => {}, 0), // timer
+    );
 
-	it('should create game controllers with initial settings', () => {
-		gameControllers(
-			sizeX,
-			sizeY,
-			fieldWrapper,
-			changeSizeBtn,
-			speedInput,
-			playBtn,
-			widthInput,
-			heightInput,
-			gameIsRunning,
-			timer
-		);
-
-		// Тесты на возможную работу, изменение и остановку игры
-		// добавьте здесь соответствующие проверки для ваших контроллеров
-	});
-
-	it('should handle size change and update the field', () => {
-		gameControllers(
-			sizeX,
-			sizeY,
-			fieldWrapper,
-			changeSizeBtn,
-			speedInput,
-			playBtn,
-			widthInput,
-			heightInput,
-			gameIsRunning,
-			timer
-		);
-
-		// Тесты на изменение размера и перерисовку поля
-		// добавьте здесь соответствующие проверки для изменения размеров поля
-	});
-
-	it('should start and stop the game correctly', () => {
-		gameControllers(
-			sizeX,
-			sizeY,
-			fieldWrapper,
-			changeSizeBtn,
-			speedInput,
-			playBtn,
-			widthInput,
-			heightInput,
-			gameIsRunning,
-			timer
-		);
-
-		// Тесты на запуск и остановку игры
-		// добавьте здесь соответствующие проверки для запуска и остановки игры
-	});
-
-	it('should update game speed and timer on input change', () => {
-		gameControllers(
-			sizeX,
-			sizeY,
-			fieldWrapper,
-			changeSizeBtn,
-			speedInput,
-			playBtn,
-			widthInput,
-			heightInput,
-			gameIsRunning,
-			timer
-		);
-
-		// Тесты на изменение скорости игры и таймера при изменении ввода
-		// добавьте здесь соответствующие проверки для обработки изменения скорости и таймера
-	});
+    mockWidthInput.value = "15";
+    mockHeightInput.value = "15";
+    mockChangeSizeBtn.click();
+  });
 });
