@@ -3,8 +3,9 @@
  * https://jestjs.io/docs/configuration
  */
 
-/** @type {import('jest').Config} */
-const config = {
+import type { Config } from "jest";
+
+const config: Config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -153,7 +154,7 @@ const config = {
 
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
-
+  verbose: true,
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
 
@@ -181,11 +182,11 @@ const config = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  transform: {
-    "^.+\\.js$": "babel-jest",
-    ".+\\.(css|styl|less|sass|scss|png|jpg|svg|ttf|woff|woff2)$":
-      "jest-transform-stub",
-  },
+  // transform: {
+  //   "^.+\\.js$": "babel-jest",
+  //   ".+\\.(css|styl|less|sass|scss|png|jpg|svg|ttf|woff|woff2)$":
+  //     "jest-transform-stub",
+  // },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
@@ -207,4 +208,4 @@ const config = {
   testTimeout: 20000,
 };
 
-module.exports = config;
+export default config;

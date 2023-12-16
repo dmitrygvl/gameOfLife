@@ -1,3 +1,5 @@
+import "./styles/style.css";
+
 // Запуск игры
 //
 // - создать элемент и добавить его на страницу
@@ -6,11 +8,11 @@
 const { createGameOfLife } = require("./modules/createGameOfLife");
 
 // - для проверки своего кода можно создать еще один элемент и создать вторую игру на этой же странице
-const gameWrapper1 = document.createElement("div");
-const gameWrapper2 = document.createElement("div");
+const gameWrapper1 = document.createElement("section");
+const gameWrapper2 = document.createElement("section");
 
 document.body.appendChild(gameWrapper1);
 document.body.appendChild(gameWrapper2);
 
-createGameOfLife(3, 3, gameWrapper1);
-createGameOfLife(10, 10, gameWrapper2);
+createGameOfLife(7, 7, gameWrapper1);
+createGameOfLife(12, 12, gameWrapper2);
