@@ -43,12 +43,13 @@ export function gameControllers(
 
     if (newHeight > field.length) {
       const newRows = Array.from({ length: newHeight - field.length }).map(() =>
-        new Array(newHeight).fill(0),
+        new Array(newWidth).fill(0),
       );
       field.push(...newRows);
     } else if (newHeight < field.length) {
       field = field.slice(0, newHeight);
     }
+
     drawField(fieldWrapper, field, cellClickHandler);
   });
 
