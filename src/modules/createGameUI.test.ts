@@ -1,11 +1,11 @@
-import { createGameUI } from "./createGameUI";
+import { createGameUI } from './createGameUI';
 
-describe("createGameUI", () => {
+describe('createGameUI', () => {
   let appElement: HTMLElement;
 
   beforeEach(() => {
-    appElement = document.createElement("div");
-    appElement.id = "app";
+    appElement = document.createElement('div');
+    appElement.id = 'app';
     document.body.appendChild(appElement);
   });
 
@@ -13,25 +13,25 @@ describe("createGameUI", () => {
     appElement?.remove();
   });
 
-  it("should create game UI with initial settings", () => {
+  it('should create game UI with initial settings', () => {
     createGameUI(appElement);
     const controlSpeedElement = appElement.querySelector(
-      ".control-speed",
+      '.control-speed',
     ) as HTMLInputElement;
     const controlWidthElement = appElement.querySelector(
-      ".control-width",
+      '.control-width',
     ) as HTMLInputElement;
     const controlHeightElement = appElement.querySelector(
-      ".control-height",
+      '.control-height',
     ) as HTMLInputElement;
     const changeSizeBtnElement = appElement.querySelector(
-      ".changeSizeBtn",
+      '.changeSizeBtn',
     ) as HTMLButtonElement;
     const fieldWrapperElement = appElement.querySelector(
-      ".field-wrapper",
+      '.field-wrapper',
     ) as HTMLElement;
     const playBtnElement = appElement.querySelector(
-      ".playBtn",
+      '.playBtn',
     ) as HTMLButtonElement;
 
     expect(controlSpeedElement).not.toBeNull();
@@ -42,20 +42,20 @@ describe("createGameUI", () => {
     expect(playBtnElement).not.toBeNull();
   });
 
-  it("should set initial values for input elements", () => {
+  it('should set initial values for input elements', () => {
     createGameUI(appElement);
     const controlSpeedElement = appElement.querySelector(
-      ".control-speed",
+      '.control-speed',
     ) as HTMLInputElement;
     const controlWidthElement = appElement.querySelector(
-      ".control-width",
+      '.control-width',
     ) as HTMLInputElement;
     const controlHeightElement = appElement.querySelector(
-      ".control-height",
+      '.control-height',
     ) as HTMLInputElement;
 
-    expect(controlSpeedElement.value).toBe("100");
-    expect(controlWidthElement.value).toBe("7");
-    expect(controlHeightElement.value).toBe("7");
+    expect(controlSpeedElement.value).toBe('100');
+    expect(controlWidthElement.value).toBe('7');
+    expect(controlHeightElement.value).toBe('7');
   });
 });

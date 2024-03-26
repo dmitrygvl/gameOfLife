@@ -1,15 +1,8 @@
-import "./styles/style.css";
+import './styles/style.css';
+import { createGameOfLife } from './modules/createGameOfLife';
 
-// Запуск игры
-//
-// - создать элемент и добавить его на страницу
-// - создать на этом элементе игру с помощью `createGameOfLife` с размерами поля x / y
-
-const { createGameOfLife } = require("./modules/createGameOfLife");
-
-// - для проверки своего кода можно создать еще один элемент и создать вторую игру на этой же странице
-const gameWrapper1 = document.createElement("section");
-const gameWrapper2 = document.createElement("section");
+const gameWrapper1 = document.createElement('section');
+const gameWrapper2 = document.createElement('section');
 
 document.body.appendChild(gameWrapper1);
 document.body.appendChild(gameWrapper2);

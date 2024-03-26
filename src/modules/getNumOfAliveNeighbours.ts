@@ -1,4 +1,4 @@
-import { getCellState } from "./getCellState";
+import { getCellState } from './getCellState';
 
 /**
  * узнать сколько живых соседей вокруг клетки

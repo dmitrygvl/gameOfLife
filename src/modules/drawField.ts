@@ -1,4 +1,4 @@
-import { getNumOfAliveNeighbours } from "./getNumOfAliveNeighbours";
+import { getNumOfAliveNeighbours } from './getNumOfAliveNeighbours';
 
 /**
  * отрисовка поля
@@ -38,19 +38,19 @@ export function drawField(
       data-y=${rowIndex}
       class="cell dead"></td>`;
       })
-      .join("")}</tr>`;
+      .join('')}</tr>`;
 
-  const table = `<table border=1>${field.map(rowIterator).join("")}</table>`;
+  const table = `<table border=1>${field.map(rowIterator).join('')}</table>`;
 
   // eslint-disable-next-line no-param-reassign
   htmlElement.innerHTML = table;
 
-  htmlElement.querySelector("table")!.addEventListener("click", (ev) => {
+  htmlElement.querySelector('table')!.addEventListener('click', (ev) => {
     const clickedElement = ev.target as HTMLElement;
 
-    const x = clickedElement.getAttribute("data-x");
+    const x = clickedElement.getAttribute('data-x');
 
-    const y = clickedElement.getAttribute("data-y");
+    const y = clickedElement.getAttribute('data-y');
     if (x && y) {
       onCellClick(Number(x), Number(y));
     }

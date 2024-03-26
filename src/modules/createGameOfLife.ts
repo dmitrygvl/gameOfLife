@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 
-import { drawField } from "./drawField";
-import { getNextState } from "./getNextState";
-import { isAnyoneAlive } from "./isAnyoneAlive";
-import { createGameUI } from "./createGameUI";
-import { gameControllers } from "./gameControllers";
+import { drawField } from './drawField';
+import { getNextState } from './getNextState';
+import { isAnyoneAlive } from './isAnyoneAlive';
+import { createGameUI } from './createGameUI';
+import { gameControllers } from './gameControllers';
 
 /**
  * Создание игры Жизнь
@@ -20,7 +20,6 @@ export function createGameOfLife(
   htmlElement: HTMLElement,
 ): void {
   const gameIsRunning = false;
-  // let timer: ReturnType<typeof setInterval>;
   let timer: NodeJS.Timeout;
 
   // Создать блок для поля
@@ -28,21 +27,21 @@ export function createGameOfLife(
 
   // Создать кнопки управления игрой
   const speedInput = htmlElement.querySelector(
-    ".control-speed",
+    '.control-speed',
   ) as HTMLInputElement;
   const widthInput = htmlElement.querySelector(
-    ".control-width",
+    '.control-width',
   ) as HTMLInputElement;
   const heightInput = htmlElement.querySelector(
-    ".control-height",
+    '.control-height',
   ) as HTMLInputElement;
   const changeSizeBtn = htmlElement.querySelector(
-    ".changeSizeBtn",
+    '.changeSizeBtn',
   ) as HTMLButtonElement;
   const fieldWrapper = htmlElement.querySelector(
-    ".field-wrapper",
+    '.field-wrapper',
   ) as HTMLElement;
-  const playBtn = htmlElement.querySelector(".playBtn") as HTMLButtonElement;
+  const playBtn = htmlElement.querySelector('.playBtn') as HTMLButtonElement;
   gameControllers(
     sizeX,
     sizeY,
