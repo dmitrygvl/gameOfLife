@@ -4,14 +4,15 @@
 <strong>Game of Life built in Typescript</strong>
 
   <p>
-    <a href=""><img src="https://img.shields.io/azure-devops/build/rustwasm/gloo/6.svg?style=flat-square" alt="Build Status" /></a>
-    [![codecov](https://codecov.io/gh/dmitrygvl/gameOfLife/graph/badge.svg?token=pDSBNHXf19)](https://codecov.io/gh/dmitrygvl/gameOfLife)
+  <a href=""><img src="https://img.shields.io/azure-devops/build/rustwasm/gloo/6.svg?style=flat-square" alt="Build Status" /></a>
     <img alt="Badge" src="https://github.com/dmitrygvl/gameOfLife/actions/workflows/sanity-check.yml/badge.svg" />
   </p>
 
 _**[Deployed here](https://dmitrygvl.github.io/gameOfLife/)**_
 
----
+## </div>
+
+## Table of Contents
 
 - [About](#about)
   - [Built with](#built-with)
@@ -34,16 +35,12 @@ No players are needed for this game. Just create a pattern and you are ready to 
 ### Built with <a name="built-with"></a>
 
 <p align="center"><a href="https://babeljs.io/" target="_blank">
-  <img src="https://www.vectorlogo.zone/logos/babeljs/babeljs-icon.svg" alt="babel" width="60" height="60"/> </a> <a href="https://www.w3schools.com/css/" target="_blank">
-
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="60" height="60"/> </a> <a href="https://git-scm.com/" target="_blank">
-
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="60" height="60"/> </a> <a href="https://www.typescriptlang.org/" target="_blank">
-
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="60" height="60"/> </a> <a href="https://jestjs.io" target="_blank">
-
-<img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="60" height="60"/> </a> <a href="https://reactjs.org/" target="_blank">
-
+  <img src="https://www.vectorlogo.zone/logos/babeljs/babeljs-icon.svg" alt="babel" width="60" height="60"/> </a> <a href="https://www.w3schools.com/css/" target="_blank"> 
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="60" height="60"/> </a> <a href="https://git-scm.com/" target="_blank"> 
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="60" height="60"/> </a> <a href="https://www.typescriptlang.org/" target="_blank"> 
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="60" height="60"/> </a> <a href="https://jestjs.io" target="_blank"> 
+  <img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="60" height="60"/> </a> <a href="https://eslint.org/" target="_blank"> 
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/eslint/eslint-original.svg" alt="eslint" width="60" height="60"/> </a>
 </p>
 
 ### Rules <a name="rules"></a>
@@ -103,3 +100,6 @@ createGameOfLife(12, 12, gameWrapper2);
 ## License <a name="license"></a>
 
 [![MIT License][license-shield]][license-url]
+
+[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
