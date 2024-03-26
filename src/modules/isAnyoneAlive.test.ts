@@ -1,16 +1,16 @@
-import { isAnyoneAlive } from "./isAnyoneAlive";
+import { isAnyoneAlive } from './isAnyoneAlive';
 
-describe("isAnyoneAlive", () => {
-  it("is a function", () => {
-    expect(typeof isAnyoneAlive).toBe("function");
+describe('isAnyoneAlive', () => {
+  it('is a function', () => {
+    expect(typeof isAnyoneAlive).toBe('function');
   });
 
-  it("returns `false` for empty field", () => {
+  it('returns `false` for empty field', () => {
     expect(isAnyoneAlive([])).toBe(false);
     expect(isAnyoneAlive([[]])).toBe(false);
   });
 
-  it("returns `true` for field 1x1 from 1", () => {
+  it('returns `true` for field 1x1 from 1', () => {
     expect(isAnyoneAlive([[1]])).toBe(true);
   });
   [

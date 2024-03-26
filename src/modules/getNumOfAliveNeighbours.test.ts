@@ -1,8 +1,8 @@
-import { getNumOfAliveNeighbours } from "./getNumOfAliveNeighbours";
+import { getNumOfAliveNeighbours } from './getNumOfAliveNeighbours';
 
-describe("getNumOfAliveNeighbours", () => {
-  it("is a function", () => {
-    expect(typeof getNumOfAliveNeighbours).toBe("function");
+describe('getNumOfAliveNeighbours', () => {
+  it('is a function', () => {
+    expect(typeof getNumOfAliveNeighbours).toBe('function');
   });
 
   [

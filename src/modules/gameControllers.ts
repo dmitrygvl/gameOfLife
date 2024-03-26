@@ -1,6 +1,6 @@
-import { drawField } from "./drawField";
-import { getNextState } from "./getNextState";
-import { isAnyoneAlive } from "./isAnyoneAlive";
+import { drawField } from './drawField';
+import { getNextState } from './getNextState';
+import { isAnyoneAlive } from './isAnyoneAlive';
 
 export function gameControllers(
   sizeX: number,
@@ -27,7 +27,7 @@ export function gameControllers(
   };
 
   // Изменить размер игрового поля
-  changeSizeBtn.addEventListener("click", () => {
+  changeSizeBtn.addEventListener('click', () => {
     const newWidth = parseInt(widthInput.value, 10);
     const newHeight = parseInt(heightInput.value, 10);
 
@@ -60,7 +60,7 @@ export function gameControllers(
   // - перерисовать поле
   function stopGame(): void {
     gameIsRunning = false;
-    playBtn!.innerHTML = "Start";
+    playBtn!.innerHTML = 'Start';
     // При клике на кнопке `Stop` остановить таймер
     clearInterval(timer);
   }
@@ -75,7 +75,7 @@ export function gameControllers(
     field = getNextState(field);
     drawField(fieldWrapper, field, cellClickHandler);
     if (!isAnyoneAlive(field)) {
-      alert("Death on the block!");
+      alert('Death on the block!');
       stopGame();
     }
   }
@@ -84,12 +84,12 @@ export function gameControllers(
     // При клике по кнопке старт
     // - поменять надпись на `Stop`
     gameIsRunning = true;
-    playBtn!.innerHTML = "Stop";
+    playBtn!.innerHTML = 'Stop';
     // - запустить таймер для обновления поля
     timer = setInterval(updateGame, speed);
   }
 
-  playBtn!.addEventListener("click", () => {
+  playBtn!.addEventListener('click', () => {
     if (!gameIsRunning) {
       startGame();
     } else {
@@ -106,5 +106,5 @@ export function gameControllers(
     }
   }
 
-  speedInput.addEventListener("input", changeGameSpeed);
+  speedInput.addEventListener('input', changeGameSpeed);
 }

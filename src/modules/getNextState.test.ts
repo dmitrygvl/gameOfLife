@@ -1,14 +1,14 @@
-import { getNextState } from "./getNextState";
+import { getNextState } from './getNextState';
 
 /**
  * @param {number[][]} field
  * @returns string
  */
 function fieldToStr(field: number[][]) {
-  return `\n${field.map((el) => el.join("")).join("\n")}\n`;
+  return `\n${field.map((el) => el.join('')).join('\n')}\n`;
 }
 
-describe("getNextState", () => {
+describe('getNextState', () => {
   [
     { field: [[0]], nextState: [[0]] },
     { field: [[0], [0]], nextState: [[0], [0]] },
